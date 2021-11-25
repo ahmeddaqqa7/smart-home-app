@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "658529685817",
+    "firebase_url": "https://ahmed-18bac-default-rtdb.firebaseio.com",
+    "project_id": "ahmed-18bac",
+    "storage_bucket": "ahmed-18bac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658529685817:android:49a373106733b08869d8e8",
+        "android_client_info": {
+          "package_name": "com.example.smart_home_app_esp32"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658529685817-l8t4usfo4kufr8vl90n41m2uhgv8q588.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBIb_aikHwo9ACxhXcMGxB5K8HYCmQLqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658529685817-l8t4usfo4kufr8vl90n41m2uhgv8q588.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
