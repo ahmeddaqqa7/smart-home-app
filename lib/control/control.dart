@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +26,7 @@ class _NewControlState extends State<NewControl> with TickerProviderStateMixin{
   bool isLoading = false;
 
   final dbR = FirebaseDatabase.instance.reference();
+ late double Temp ;
   late AnimationController _animationController;
   late Animation<double> _animation;
   late AnimationController progressController;
@@ -53,18 +56,18 @@ class _NewControlState extends State<NewControl> with TickerProviderStateMixin{
     });
     _animationController.forward();
     super.initState();
-    super.initState();
+   final ref= dbR.reference().child("ESP32_Device");
 
-    dbR
-        .child('ESP32_Device')
-        .once()
-        .then((DataSnapshot snapshot) {
-      double t  = 20; //snapshot.value['Temperature']['Data'];
-      double h = 30;//snapshot.value['Humidity']['Data'];
+    dbR.child("ESP32_Device").once().then((DataSnapshot data){
+      setState(() {
+       double temp = data.value["Temperature"];
+       double humidity = data.value["Humidity"];
 
-      isLoading = true;
-      _dashboardInit(t, h);
+       isLoading = true;
+       _dashboardInit(temp, humidity);
+      });
     });
+
   }
   _dashboardInit(double temp, double humid) {
     progressController = AnimationController(
@@ -84,9 +87,13 @@ class _NewControlState extends State<NewControl> with TickerProviderStateMixin{
 
     progressController.forward();
   }
+  
+
+  
   //////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -312,7 +319,7 @@ class _NewControlState extends State<NewControl> with TickerProviderStateMixin{
                   )
                       :const Text(
                     'Loading...',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.white,),
                   )),
             ],
           ),
